@@ -1,0 +1,23 @@
+header {
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    /* border: 2px #ccc solid; */
+    /* border-radius: 2ch; */
+}
+
+.twitterIcon {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    flex-basis: 80%;
+}
+
+.twitterFont p {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0em;
+    font-size: 14px;
+    color: gray;
+}

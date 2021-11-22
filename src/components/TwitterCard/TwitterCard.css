@@ -1,0 +1,50 @@
+.twitterCardContainer {
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 8px 24px;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.headerPart1 {
+    display: flex;
+    align-items: center;
+}
+
+.twitterWithIcon {
+    display: flex;
+    align-items: center;
+}
+
+.twitterDescription {
+    margin-bottom: 12px;
+}
+
+.twitterBody {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    border-radius: 8px;
+}
+
+.bodyText {
+    padding: 16px;
+}
+
+.footerRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footerRowPart1 {
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.div-1 {
+    padding-bottom: 1em;
+    padding-left: 2em;
+    /* padding-top: 0em;
+    margin-top: 0em; */
+}
+
+.div-1 p {
+    margin: 0em;
+    padding-top: 3px;
+}
+
+.div-2 {
+    padding-top: 3px;
+    padding-bottom: 0em;
+    padding-left: 0em;
+    color: gray;
+}

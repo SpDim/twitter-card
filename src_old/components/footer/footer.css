@@ -1,0 +1,45 @@
+.footer-1 {
+    display: flex;
+    margin-top: 0em;
+    color:gray;
+    /* border-bottom: 2px #ccc solid; */
+}
+
+.footer-1 pre {
+    font-family: inherit;
+    font-size: 15px;
+    padding-bottom: 0px;
+}
+
+.heart-icon {
+    padding-top: 0.5em;
+    padding-right: 3px;
+}
+
+.info-icon {
+    padding-top: 0.5em;
+    padding-left: 16.8em;
+}
+
+.speech-icon {
+    
+}
+
+.footer-2 {
+    display: flex;
+    padding-top: 0em;
+}
+
+.footer-2 pre {
+    /* border: 3px #ccc solid; */
+    padding-bottom: 0em;
+    margin-top: 0.5em;
+    font-family: inherit;
+    font-size: 15px;    
+    color: cornflowerblue;
+}
+
+.arrow-icon {
+    display: flex;
+    margin-left: 14.8em;
+}

@@ -1,0 +1,45 @@
+.App {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* padding: 2px #ccc solid; */
+  /* margin: 100px #ccc solid; */
+  padding: 2em;
+  padding-top: 1em;
+  box-sizing: 10px;
+  border: 1px #ccc solid;
+  border-radius: 1ch;
+}
+
+@media(min-width:768px) {
+  .App {
+    display:flex;
+  }
+}
+
+/*
+header {
+  background-color: lawngreen; 
+  padding: 10px;
+  border: 2px #ccc solid;
+}
+*/
+
+body {
+  /* padding: 0px; */
+  /* border: 5px #ccc solid; */
+}
+
+.twitter {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 3px;
+  border: 1px #ccc solid;
+  border-radius: 2ch;
+}
+
+footer {
+  /* padding: 20px; */
+  /* border: 2px #ccc solid; */
+}
