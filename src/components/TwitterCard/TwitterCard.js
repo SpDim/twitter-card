@@ -1,11 +1,24 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { ReactComponent as TwitterIcon } from './../../icons/icons8-twitter.svg';
 import { ReactComponent as TwitterCircle} from './../../icons/icons8-twitter-circle.svg';
 import { ReactComponent as TwitterBody} from './../../icons/twitterBodyIcon.svg';
 import './TwitterCard.css';
 
-/*
+//*
 const  TwitterCard = (props) => {
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const myTimer = setInterval(() => {
+        console.log('increase seconds');
+        setSeconds(seconds => seconds + 1);
+    }, 1000);
+
+    return () => {
+        clearInterval(myTimer);
+    };
+  }, []);
+
   return (
     <div className="twitterCardContainer">
        <div className="header">
@@ -17,7 +30,7 @@ const  TwitterCard = (props) => {
                         <strong>{props.name}</strong>
                         <TwitterIcon style={{ width: 20, height: 20 }}/>
                     </div>
-                    <div>@Twitter</div>
+                    <div>@Twitter {seconds}</div>
                 </div>
             </div>
 
@@ -69,8 +82,29 @@ const  TwitterCard = (props) => {
 export default TwitterCard;
 // */
 
-
+/*
 export default class TwitterCard extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          seconds: 0,
+        };
+
+        this.myTimer = null;
+      }
+
+      componentDidMount() {
+        this.myTimer = setInterval(()=>{
+              console.log('Increase Second');
+              this.setState({ seconds: this.state.seconds + 1});
+          },1000)
+      }
+
+    componentWillUnmount () {
+        clearInterval(this.myTimer);
+    }
+
     render() { 
         return (
             <div className="twitterCardContainer">
@@ -83,7 +117,7 @@ export default class TwitterCard extends React.Component {
                                 <strong>{this.props.name}</strong>
                                 <TwitterIcon style={{ width: 20, height: 20 }}/>
                             </div>
-                            <div>@Twitter</div>
+                            <div>@Twitter: {this.state.seconds}</div>
                         </div>
                     </div>
         
@@ -132,3 +166,4 @@ export default class TwitterCard extends React.Component {
         )
     };
   }
+  // */

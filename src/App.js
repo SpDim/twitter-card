@@ -5,124 +5,134 @@ import TwitterCard from './components/TwitterCard/TwitterCard';
 
 const delay = (time) => new Promise(resolve => setTimeout(resolve, time));
 
-// const  App = () => {
-//   const [users, setUsers] = useState([]);
-  /*
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-    .then(data => data.json())
-    .then(data => {
-      setUsers(data
-        .filter((user, index) => index <= 1)
-        .map(user => user.username)
-      )
-    })
-    .catch(() => setUsers([]));
-  }, []);
- // */
+const  App = () => {
+  const [users, setUsers] = useState([]);
+  const [loaderCounter, setLoaderCounter] = useState(0);
 
-/*
-  useEffect(() => {
-    (async () => {
-      try {
-        const data = await fetch('https://jsonplaceholder.typicode.com/users');
-        const jsonData = await data.json();
+  // useEffect(() => {
+  //   fetch('https://jsonplaceholder.typicode.com/users')
+  //   .then(data => data.json())
+  //   .then(data => {
+  //     setUsers(data
+  //       .filter((user, index) => index <= 1)
+  //       .map(user => user.username)
+  //     )
+  //   })
+  //   .catch(() => setUsers([]));
+  // }, []);
+
+
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const data = await fetch('https://jsonplaceholder.typicode.com/users');
+  //       const jsonData = await data.json();
+  //       setUsers(jsonData
+  //         .filter((user, index) => index <= 1)
+  //         .map(user => user.username)
+  //       )
+  //     } catch (error) {
+  //       setUsers([]);
+  //     }
+  //   })()
+  // }, []);
+
+
+  const fetchUsers = async (time) => {
+    // setLoaderCounter( loaderCounter => loaderCounter + 1);
+    try {
+      await delay(time);
+      const data = await fetch('https://jsonplaceholder.typicode.com/users');
+      const jsonData = await data.json();
+      
+      //  setLoaderCounter( loaderCounter => loaderCounter - 1);
+
+      if(users.length === 0) {
         setUsers(jsonData
           .filter((user, index) => index <= 1)
           .map(user => user.username)
-        )
-      } catch (error) {
-        setUsers([]);
+        );
       }
-    })()
+    } catch (error) {
+      setUsers([]);
+      // setLoaderCounter( loaderCounter => loaderCounter - 1);
+    }
+  };
+
+  useEffect(() => {
+    setLoaderCounter( loaderCounter => loaderCounter + 1);
+    fetchUsers(1000).finally(() => setLoaderCounter( loaderCounter => loaderCounter - 1));
+    setLoaderCounter( loaderCounter => loaderCounter + 1);
+    fetchUsers(3000).finally(() => setLoaderCounter( loaderCounter => loaderCounter - 1));
+    setLoaderCounter( loaderCounter => loaderCounter + 1);
+    fetchUsers(100).finally(() => setLoaderCounter( loaderCounter => loaderCounter - 1));
+    setLoaderCounter( loaderCounter => loaderCounter + 1);
+    fetchUsers(6000).finally(() => setLoaderCounter( loaderCounter => loaderCounter - 1));
+    setLoaderCounter( loaderCounter => loaderCounter + 1);
+    fetchUsers(2000).finally(() => setLoaderCounter( loaderCounter => loaderCounter - 1));
+    setLoaderCounter( loaderCounter => loaderCounter + 1);
+    fetchUsers(11000).finally(() => setLoaderCounter( loaderCounter => loaderCounter - 1));
+    setLoaderCounter( loaderCounter => loaderCounter + 1);
+    fetchUsers(1000).finally(() => setLoaderCounter( loaderCounter => loaderCounter - 1));
+    setLoaderCounter( loaderCounter => loaderCounter + 1);
+    fetchUsers(400).finally(() => setLoaderCounter( loaderCounter => loaderCounter - 1));
+    setLoaderCounter( loaderCounter => loaderCounter + 1);
+    fetchUsers(700).finally(() => setLoaderCounter( loaderCounter => loaderCounter - 1));
+    setLoaderCounter( loaderCounter => loaderCounter + 1);
+    fetchUsers(1000).finally(() => setLoaderCounter( loaderCounter => loaderCounter - 1));
+    setLoaderCounter( loaderCounter => loaderCounter + 1);
+    fetchUsers(13000).finally(() => setLoaderCounter( loaderCounter => loaderCounter - 1));
+    setLoaderCounter( loaderCounter => loaderCounter + 1);
+    fetchUsers(1000).finally(() => setLoaderCounter( loaderCounter => loaderCounter - 1));
+    setLoaderCounter( loaderCounter => loaderCounter + 1);
+    fetchUsers(2000).finally(() => setLoaderCounter( loaderCounter => loaderCounter - 1));
+    setLoaderCounter( loaderCounter => loaderCounter + 1);
+    fetchUsers(3000).finally(() => setLoaderCounter( loaderCounter => loaderCounter - 1));
+    setLoaderCounter( loaderCounter => loaderCounter + 1);
+    fetchUsers(1000).finally(() => setLoaderCounter( loaderCounter => loaderCounter - 1));
+    setLoaderCounter( loaderCounter => loaderCounter + 1);
+    fetchUsers(1500).finally(() => setLoaderCounter( loaderCounter => loaderCounter - 1));
   }, []);
-  // */
-
-//   const fetchUsers = async (time) => {
-//     try {
-//       await delay(time);
-//       const data = await fetch('https://jsonplaceholder.typicode.com/users');
-//       const jsonData = await data.json();
-//       setUsers(jsonData
-//         .filter((user, index) => index <= 1)
-//         .map(user => user.username)
-//       );
-//     } catch (error) {
-//       setUsers([]);
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchUsers(1000);
-//     fetchUsers(3000);
-//     fetchUsers(100);
-//     fetchUsers(6000);
-//     fetchUsers(2000);
-//     fetchUsers(11000);
-//     fetchUsers(1000);
-//     fetchUsers(400);
-//     fetchUsers(700);
-//     fetchUsers(1000);
-//     fetchUsers(13000);
-//     fetchUsers(1000);
-//     fetchUsers(2000);
-//     fetchUsers(3000);
-//     fetchUsers(1000);
-//     fetchUsers(1500);
-
-//   }, []);
 
 
 
-//   return (
-//     <div className="App">
-//       {/* <div>LOADING ...</div> */}
-//       {
-//         users.length === 0 ? (
-//           <div>
-//             No users available
-//           </div>
-//         ) : (
-//           <div>
-//             <div style={{maxWidth: '600px'}}>
-//               { users[0] ? <TwitterCard name={users[0]}/> : null }
-//             </div>
-//             <br />
-//             { users[1] ? <TwitterCard name={users[1]}/> : null }
-//           </div>
-//         )
-//       }  
-//     </div>
-//   );
-// }
+  return (
+    <div className="App">
+      { 
+        loaderCounter > 0 ? (
+          <div>LOADING ...</div>
+        ) : (
+          users.length === 0 ? (
+            <div>
+              No users available
+            </div>
+          ) : (
+            <div>
+              <div style={{maxWidth: '600px'}}>
+                { users[0] ? <TwitterCard name={users[0]}/> : null }
+              </div>
+              <br />
+              { users[1] ? <TwitterCard name={users[1]}/> : null }
+            </div>
+          )
+        )
+      }  
+    </div>
+  );
+}
 
-// export default App;
+export default App;
 
 
-
+/*
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       users: [],
+      showTwitterCards: true
     };
   }  
-
- /*
-  const fetchUsers = async (time) => {
-    try {
-      await delay(time);
-      const data = await fetch('https://jsonplaceholder.typicode.com/users');
-      const jsonData = await data.json();
-      setUsers(jsonData
-        .filter((user, index) => index <= 1)
-        .map(user => user.username)
-      );
-    } catch (error) {
-      setUsers([]);
-    }
-  };
-  // */
 
   async fetchUsers (time) {
     try {
@@ -145,9 +155,12 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {/* <div>LOADING ...</div> */}
+        <button onClick={() => { this.setState({ showTwitterCards: !this.state.showTwitterCards }) }}>
+          Toggle Cards
+        </button>
+        {<div>LOADING ...</div>}
         {
-          this.state.users.length === 0 ? (
+          this.state.users.length === 0 || !this.state.showTwitterCards ? (
             <div>
               No users available
             </div>
@@ -165,3 +178,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+// */
