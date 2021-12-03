@@ -8,6 +8,7 @@ const delay = (time) => new Promise(resolve => setTimeout(resolve, time));
 const  App = () => {
   const [users, setUsers] = useState([]);
   const [loaderCounter, setLoaderCounter] = useState(0);
+  const [showTwitterCards, setShowTwitterCards] = useState(true);
 
   // useEffect(() => {
   //   fetch('https://jsonplaceholder.typicode.com/users')
@@ -98,7 +99,30 @@ const  App = () => {
 
   return (
     <div className="App">
+      <button onClick={() => { setShowTwitterCards(!showTwitterCards) }}>
+        Toggle Cards
+      </button>
       { 
+        loaderCounter >0 ? (
+          <div>LOADING ...</div>
+        ) : (
+          users.length === 0 || !showTwitterCards ? (
+              <div>
+                No users available
+              </div>
+            ) : (
+              <div style={{padding: '16px'}}>
+                <div style={{maxWidth: '600px'}}>
+                  { users[0] ? <TwitterCard name={users[0]}/> : null }
+                </div>
+                <br />
+                { users[1] ? <TwitterCard name={users[1]}/> : null }
+              </div>
+            )
+          )
+      }
+
+      {/* { 
         loaderCounter > 0 ? (
           <div>LOADING ...</div>
         ) : (
@@ -107,7 +131,7 @@ const  App = () => {
               No users available
             </div>
           ) : (
-            <div>
+            <div style={{padding: '16px'}}>
               <div style={{maxWidth: '600px'}}>
                 { users[0] ? <TwitterCard name={users[0]}/> : null }
               </div>
@@ -116,7 +140,7 @@ const  App = () => {
             </div>
           )
         )
-      }  
+      }   */}
     </div>
   );
 }
