@@ -26,7 +26,7 @@ function reducer(state = initialState, action) {
         case setUsers.type:
             return {
                 ...state,
-                setUsers: action.payload,
+                users: action.payload,
             }
         default:
             return state;
