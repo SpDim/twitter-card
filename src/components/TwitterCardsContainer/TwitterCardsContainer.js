@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import TwitterCard from '../TwitterCard/TwitterCard';
-import { setShowTwitterCards, increaseLoaderCounter, reduceLoaderCounter, setUsers } from '../../models/twitter-card/actions';
+import { setShowTwitterCards, increaseLoaderCounter, reduceLoaderCounter, setUsers } from '../../models/twitter-card';
+import { showTwitterCards, loaderCounter, users } from './../../models/twitter-card';
 
 
 // https://jsonplaceholder.typicode.com/users 
@@ -65,34 +66,6 @@ const  TwitterCardsContainer = ({ showTwitterCards, setShowTwitterCards, loaderC
     fetchUsers(1000).finally(() => reduceLoaderCounter());
     increaseLoaderCounter()
     fetchUsers(3000).finally(() => reduceLoaderCounter());
-    increaseLoaderCounter()
-    fetchUsers(100).finally(() => reduceLoaderCounter());
-    increaseLoaderCounter()
-    fetchUsers(6000).finally(() => reduceLoaderCounter());
-    increaseLoaderCounter()
-    fetchUsers(2000).finally(() => reduceLoaderCounter());
-    increaseLoaderCounter()
-    fetchUsers(11000).finally(() => reduceLoaderCounter());
-    increaseLoaderCounter()
-    fetchUsers(1000).finally(() => reduceLoaderCounter());
-    increaseLoaderCounter()
-    fetchUsers(400).finally(() => reduceLoaderCounter());
-    increaseLoaderCounter()
-    fetchUsers(700).finally(() => reduceLoaderCounter());
-    increaseLoaderCounter()
-    fetchUsers(1000).finally(() => reduceLoaderCounter());
-    increaseLoaderCounter()
-    fetchUsers(13000).finally(() => reduceLoaderCounter());
-    increaseLoaderCounter()
-    fetchUsers(1000).finally(() => reduceLoaderCounter());
-    increaseLoaderCounter()
-    fetchUsers(2000).finally(() => reduceLoaderCounter());
-    increaseLoaderCounter()
-    fetchUsers(3000).finally(() => reduceLoaderCounter());
-    increaseLoaderCounter()
-    fetchUsers(1000).finally(() => reduceLoaderCounter());
-    increaseLoaderCounter()
-    fetchUsers(1500).finally(() => reduceLoaderCounter());
   }, []);
 
 
@@ -148,21 +121,28 @@ const  TwitterCardsContainer = ({ showTwitterCards, setShowTwitterCards, loaderC
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    showTwitterCards: state.showTwitterCards,
-    loaderCounter: state.loaderCounter,
-    users: state.users
+    showTwitterCards: showTwitterCards(state),
+    loaderCounter: loaderCounter(state),
+    users: users(state)
   };
 };
 
+const mapDispatchToProps = {
+  setShowTwitterCards,
+  increaseLoaderCounter,
+  reduceLoaderCounter,
+  setUsers
+}
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setShowTwitterCards: (payload) => dispatch(setShowTwitterCards(payload)),
-    increaseLoaderCounter: () => dispatch(increaseLoaderCounter()) , 
-    reduceLoaderCounter: () => dispatch(reduceLoaderCounter()),
-    setUsers: (payload) => dispatch(setUsers(payload))
-  };
-};
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     setShowTwitterCards: (payload) => dispatch(setShowTwitterCards(payload)),
+//     increaseLoaderCounter: () => dispatch(increaseLoaderCounter()) , 
+//     reduceLoaderCounter: () => dispatch(reduceLoaderCounter()),
+//     setUsers: (payload) => dispatch(setUsers(payload))
+//   };
+// };
 
 
 export default connect(

@@ -1,7 +1,9 @@
 import { setShowTwitterCards, increaseLoaderCounter, reduceLoaderCounter, setUsers } from "./actions";
 
 export const initialState = {
-    showTwitterCards: true,
+    layout: {
+        showTwitterCards: true,
+    },
     loaderCounter: 0,
     users: []
 };
@@ -11,7 +13,10 @@ function reducer(state = initialState, action) {
         case setShowTwitterCards.type:
             return {
                 ...state,
-                showTwitterCards: action.payload,
+                layout: {
+                    ...state.layout,
+                    showTwitterCards: action.payload,
+                }
             }
         case increaseLoaderCounter.type:
             return {
