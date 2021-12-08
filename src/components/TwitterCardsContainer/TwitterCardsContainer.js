@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import TwitterCard from '../TwitterCard/TwitterCard';
 import { setShowTwitterCards, increaseLoaderCounter, reduceLoaderCounter, setUsers } from '../../models/twitter-card';
